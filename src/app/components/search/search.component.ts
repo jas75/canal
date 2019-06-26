@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { Movie } from '../../interfaces/Movie';
 import { JsonService } from 'src/app/services/json.service';
 
@@ -22,5 +21,6 @@ export class SearchComponent implements OnInit {
       this.dataSet = data;
     });
   }
+
 
 }
