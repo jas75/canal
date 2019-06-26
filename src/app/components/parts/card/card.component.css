@@ -5,3 +5,8 @@
     margin: 20px;
     padding: 10px;
 }
+
+.card:hover {
+    background-color: red;
+    cursor: pointer;
+}

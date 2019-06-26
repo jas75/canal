@@ -17,12 +17,12 @@ export class MainComponent implements OnInit {
 
   searchForm: FormGroup;
   dataSet: Array<Movie>;
-  arrayToDisplay: Array<Movie>;
+  movies: Array<Movie>;
 
   ngOnInit() {
     this.jsonService.getAll().subscribe(data => {
       this.dataSet = data;
-      this.arrayToDisplay = data;
+      this.movies = data;
     });
 
     this.searchForm = this.formBuilder.group({
@@ -32,23 +32,32 @@ export class MainComponent implements OnInit {
   }
 
   onChange(event) {
-    this.arrayToDisplay = this.dataSet;
+    this.movies = this.dataSet;
 
     const year = this.searchForm.controls.startYear.value;
     const title = this.searchForm.controls.title.value;
     if (title && year) {
-      this.arrayToDisplay = this.dataSet.filter(movie => {
+      this.movies = this.dataSet.filter(movie => {
         return movie.primaryTitle.includes(title) || movie.originalTitle.includes(title) && movie.startYear == year;
       });
     } else if (title) {
-        this.arrayToDisplay = this.dataSet.filter(movie => {
+        this.movies = this.dataSet.filter(movie => {
           return movie.primaryTitle.includes(title) || movie.originalTitle.includes(title) ;
         });
     } else if (year) {
-        this.arrayToDisplay = this.dataSet.filter(movie => {
+        this.movies = this.dataSet.filter(movie => {
           return movie.startYear == year;
         });
     }
+  }
+
+  onEdit(event) {
+    this.dataSet.forEach(movie => {
+      if (movie.originalTitle === event.originalTitle) {
+        let index = this.dataSet.indexOf(movie);
+        this.dataSet[index] = movie;
+      }
+    });
   }
 
 }

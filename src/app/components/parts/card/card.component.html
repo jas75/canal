@@ -1,4 +1,24 @@
-<div class="card">
+
+<form class="card" [formGroup]="editForm" *ngIf="editMode" (ngSubmit)="onSubmit()">
+
+  <strong>{{movie.originalTitle}}</strong>
+  <br>
+  <input 
+      type="text"
+      formControlName="startYear"
+      [(ngModel)]="movie.startYear">
+
+
+    <input 
+      type="text"
+      formControlName="genres"
+      [(ngModel)]="movie.genres">
+
+      <button type="submit">Save</button>
+
+</form>
+
+<div class="card" *ngIf="!editMode" (click)="editMode=true">
   <strong>{{movie.originalTitle}}</strong>
   <br>
   <em>

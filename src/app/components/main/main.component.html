@@ -13,8 +13,8 @@
     (input)="onChange($event.target.value)">
 </form>
 
-<app-card *ngFor="let movie of arrayToDisplay" [movie]="movie"></app-card>
+<app-card *ngFor="let movie of movies" [movie]="movie" (movieEdit)="onEdit($event)"></app-card>
 
-<div class="nothing" *ngIf="arrayToDisplay.length == 0">
+<div class="nothing" *ngIf="movies && movies.length == 0">
   No results found
 </div>
