@@ -1,0 +1,15 @@
+form {
+    text-align: center;
+}
+
+input {
+    margin: 10px;
+    font-size: 1.5em; 
+}
+
+.nothing {
+    text-align: center;
+    font-size: 2em;
+    color: grey;
+    margin-top: 15%;
+}

@@ -17,11 +17,12 @@ export class MainComponent implements OnInit {
 
   searchForm: FormGroup;
   dataSet: Array<Movie>;
-  arrayToDisplay: Array<Movie> = [];
+  arrayToDisplay: Array<Movie>;
 
   ngOnInit() {
     this.jsonService.getAll().subscribe(data => {
       this.dataSet = data;
+      this.arrayToDisplay = data;
     });
 
     this.searchForm = this.formBuilder.group({
@@ -31,11 +32,10 @@ export class MainComponent implements OnInit {
   }
 
   onChange(event) {
-    this.arrayToDisplay = [];
+    this.arrayToDisplay = this.dataSet;
 
     const year = this.searchForm.controls.startYear.value;
     const title = this.searchForm.controls.title.value;
-    
     if (title && year) {
       this.arrayToDisplay = this.dataSet.filter(movie => {
         return movie.primaryTitle.includes(title) || movie.originalTitle.includes(title) && movie.startYear == year;
@@ -49,8 +49,6 @@ export class MainComponent implements OnInit {
           return movie.startYear == year;
         });
     }
-
-    console.log(this.arrayToDisplay);
   }
 
 }
