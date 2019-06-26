@@ -1,5 +1,14 @@
 <form [formGroup]="searchForm">
-  <input type="text" placeholder="ex: The Sprinkler Sprinkled" formControlName="title">
+  <input 
+    type="text" 
+    placeholder="ex: The Sprinkler Sprinkled" 
+    formControlName="title"
+    (input)="onChange($event.target.value)">
+
   <br>
-  <input type="text" placeholder="ex: 1896" formControlName="startYear">
+  <input 
+    type="text"
+    placeholder="ex: 1896" 
+    formControlName="startYear"
+    (input)="onChange($event.target.value)">
 </form>
