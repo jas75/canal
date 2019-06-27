@@ -1,6 +1,5 @@
 
 <form 
-  (click)="editMode=false" 
   class="card" 
   [formGroup]="editForm" 
   *ngIf="editMode" 
@@ -22,7 +21,7 @@
       <br>
 
       <button (click)="editMode=false">Cancel</button>
-      <button type="submit">Save</button>
+      <button [disabled]="!editForm.controls.startYear.dirty && !editForm.controls.genres.dirty " type="submit">Save</button>
 
 </form>
 
@@ -34,5 +33,7 @@
   </em>
   <br>
   {{movie.genres}}
+
+  <p class="success" *ngIf="wellSaved">Success</p>
 </div>
 

@@ -7,7 +7,7 @@
 }
 
 .card:hover {
-    background-color: #1f54ca;
+    background-color: #55a1ef;
     cursor: pointer;
     color: white;
 }
@@ -18,4 +18,8 @@ input {
 
 form button {
     margin: 10px;
+}
+
+.success {
+    color: #3bce3f;
 }
