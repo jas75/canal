@@ -35,10 +35,11 @@ export class MainComponent implements OnInit {
     this.movies = this.dataSet;
 
     const year = this.searchForm.controls.startYear.value;
-    const title = this.searchForm.controls.title.value;
+    const title = this.searchForm.controls.title.value.charAt(0).toUpperCase() + this.searchForm.controls.title.value.slice(1);
+
     if (title && year) {
       this.movies = this.dataSet.filter(movie => {
-        return movie.primaryTitle.includes(title) || movie.originalTitle.includes(title) && movie.startYear == year;
+        return (movie.primaryTitle.includes(title) || movie.originalTitle.includes(title)) && movie.startYear == year;
       });
     } else if (title) {
         this.movies = this.dataSet.filter(movie => {
