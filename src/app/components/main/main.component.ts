@@ -54,8 +54,8 @@ export class MainComponent implements OnInit {
   onEdit(event) {
     this.dataSet.forEach(movie => {
       if (movie.originalTitle === event.originalTitle) {
-        let index = this.dataSet.indexOf(movie);
-        this.dataSet[index] = movie;
+        const index = this.dataSet.indexOf(movie);
+        this.dataSet[index] = event;
       }
     });
   }
