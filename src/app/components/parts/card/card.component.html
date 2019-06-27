@@ -1,19 +1,27 @@
 
-<form class="card" [formGroup]="editForm" *ngIf="editMode" (ngSubmit)="onSubmit()">
+<form 
+  (click)="editMode=false" 
+  class="card" 
+  [formGroup]="editForm" 
+  *ngIf="editMode" 
+  (ngSubmit)="onSubmit()">
 
   <strong>{{movie.originalTitle}}</strong>
   <br>
   <input 
       type="text"
       formControlName="startYear"
-      [(ngModel)]="movie.startYear">
+      [value]="movie.startYear">
 
 
     <input 
       type="text"
       formControlName="genres"
-      [(ngModel)]="movie.genres">
+      [value]="movie.genres">
 
+      <br>
+
+      <button (click)="editMode=false">Cancel</button>
       <button type="submit">Save</button>
 
 </form>
